@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MercadoLearn | Aprende Mercadotecnia</title>
+
+<style>
+:root {
+    --azul: #172554;
+    --azul2: #2563a6;
+    --turquesa: #60d5e8;
+    --fondo: #f3f7fc;
+    --texto: #263449;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+header {
+    background: var(--azul);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--turquesa);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 7px;
+}
+
+nav button:hover,
+nav button.activo {
+    background: var(--azul2);
+}
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.pagina {
+    display: none;
+    animation: aparecer .3s ease;
+}
+
+.pagina.activa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from {opacity: 0; transform: translateY(8px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.hero {
+    background: linear-gradient(120deg, var(--azul), var(--azul2));
+    color: white;
+    padding: 65px 35px;
+    border-radius: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+}
+
+h2 {
+    color: var(--azul);
+    margin-bottom: 18px;
+}
+
+h3 {
+    color: var(--azul2);
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+.boton {
+    display: inline-block;
+    background: var(--turquesa);
+    color: var(--azul);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.boton:hover {
+    opacity: .85;
+}
+
+.boton-azul {
+    background: var(--azul2);
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.card {
+    background: white;
+    padding: 23px;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px #17255412;
+    border: 1px solid #e1e8f0;
+}
+
+.card p {
+    margin-bottom: 0;
+}
+
+.icono {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.seccion {
+    background: white;
+    padding: 25px;
+    border-radius: 13px;
+    margin-top: 22px;
+    box-shadow: 0 3px 12px #17255410;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #fff0c2;
+    color: #805500;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.tema {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tema.seleccionado {
+    border: 2px solid var(--azul2);
+    background: #edf6ff;
+}
+
+.tema button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    background: var(--azul2);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tema.seleccionado button {
+    background: #16835b;
+}
+
+.lista-favoritos {
+    padding-left: 22px;
+}
+
+.lista-favoritos li {
+    margin: 8px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #dbe3ed;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: var(--azul);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f6fc;
+}
+
+.recorrido {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.paso {
+    background: #edf5ff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.numero {
+    background: var(--azul2);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 10px;
+    font-weight: bold;
+}
+
+.aviso {
+    background: #fff5d9;
+    border-left: 5px solid #e6a700;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+footer {
+    background: var(--azul);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+@media(max-width: 650px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    nav button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .recorrido {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MercadoLearn</div>
+
+    <nav>
+        <button class="activo" onclick="mostrarPagina('inicio',this)">Inicio</button>
+        <button onclick="mostrarPagina('nosotros',this)">Nosotros</button>
+        <button onclick="mostrarPagina('aprende',this)">Aprende</button>
+        <button onclick="mostrarPagina('estrategias',this)">Estrategias</button>
+        <button onclick="mostrarPagina('oportunidades',this)">Oportunidades</button>
+        <button onclick="mostrarPagina('favoritos',this)">Mis favoritos</button>
+    </nav>
+</header>
+
+<main>
+
+<!-- INICIO -->
+<section id="inicio" class="pagina activa">
+
+    <div class="hero">
+        <h1>Bienvenido a MercadoLearn</h1>
+        <p>
+            Aprende sobre mercadotecnia, conoce sus estrategias
+            y descubre cómo las empresas conectan con sus clientes.
+        </p>
+        <button class="boton" onclick="mostrarPagina('aprende')">
+            Comenzar a aprender
+        </button>
+    </div>
+
+    <h2>Explora la mercadotecnia</h2>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icono">📚</div>
+            <h3>Aprende</h3>
+            <p>Conoce los conceptos principales de la mercadotecnia.</p>
+        </div>
+
+        <div class="card">
+            <div class="icono">📈</div>
+            <h3>Estrategias</h3>
+            <p>Descubre cómo las marcas promocionan sus productos.</p>
+        </div>
+
+        <div class="card">
+            <div class="icono">💼</div>
+            <h3>Oportunidades</h3>
+            <p>Conoce las diferentes áreas profesionales.</p>
+        </div>
+    </div>
+
+    <div class="seccion">
+        <h2>Nueva función</h2>
+        <p>
+            Ahora puedes conocer la sección de temas favoritos,
+            donde podrás seleccionar los temas que más te interesen.
+        </p>
+        <button class="boton boton-azul"
+        onclick="mostrarPagina('favoritos')">
+            Ver mis favoritos
+        </button>
+    </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="pagina">
+
+    <h2>Sobre nosotros</h2>
+
+    <div class="seccion">
+        <h3>¿Quiénes somos?</h3>
+        <p>
+            Somos MercadoLearn, una página informativa creada para
+            compartir conocimientos sobre mercadotecnia de una manera
+            sencilla, práctica y accesible para los estudiantes.
+        </p>
+
+        <h3>Misión</h3>
+        <p>
+            Nuestra misión es ayudar a los estudiantes a comprender
+            la mercadotecnia mediante información clara y ejemplos
+            que puedan relacionar con la vida cotidiana.
+        </p>
+
+        <h3>Visión</h3>
+        <p>
+            Nuestra visión es convertirnos en un espacio educativo
+            que facilite el aprendizaje de la mercadotecnia y permita
+            conocer sus diferentes aplicaciones.
+        </p>
+    </div>
+</section>
+
+<!-- APRENDE -->
+<section id="aprende" class="pagina">
+
+    <h2>Aprende mercadotecnia</h2>
+    <p>Conoce algunos de los conceptos más importantes.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>¿Qué es la mercadotecnia?</h3>
+            <p>
+                Es el conjunto de actividades que ayudan a conocer
+                las necesidades de los consumidores y ofrecer
+                productos o servicios para satisfacerlas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Producto</h3>
+            <p>Es el bien o servicio que una empresa ofrece al mercado.</p>
+        </div>
+
+        <div class="card">
+            <h3>Precio</h3>
+            <p>Es la cantidad de dinero que se paga por un producto.</p>
+        </div>
+
+        <div class="card">
+            <h3>Plaza</h3>
+            <p>Son los lugares o medios donde se distribuye el producto.</p>
+        </div>
+
+        <div class="card">
+            <h3>Promoción</h3>
+            <p>Son las acciones que se realizan para dar a conocer un producto.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ESTRATEGIAS -->
+<section id="estrategias" class="pagina">
+
+    <h2>Estrategias de mercadotecnia</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Marketing digital</h3>
+            <p>Utiliza internet y redes sociales para llegar a los consumidores.</p>
+        </div>
+
+        <div class="card">
+            <h3>Publicidad</h3>
+            <p>Permite dar a conocer productos mediante anuncios y campañas.</p>
+        </div>
+
+        <div class="card">
+            <h3>Promociones</h3>
+            <p>Ofrece descuentos y beneficios para atraer clientes.</p>
+        </div>
+
+        <div class="card">
+            <h3>Investigación de mercado</h3>
+            <p>Ayuda a conocer las preferencias y necesidades de los consumidores.</p>
+        </div>
+    </div>
+</section>
+
+<!-- OPORTUNIDADES -->
+<section id="oportunidades" class="pagina">
+
+    <h2>Oportunidades profesionales</h2>
+    <p>La mercadotecnia ofrece diferentes áreas de trabajo.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Marketing digital</h3>
+            <p>Administración de campañas y contenido en internet.</p>
+        </div>
+
+        <div class="card">
+            <h3>Publicidad</h3>
+            <p>Creación de anuncios y campañas para diferentes marcas.</p>
+        </div>
+
+        <div class="card">
+            <h3>Ventas</h3>
+            <p>Promoción y comercialización de productos y servicios.</p>
+        </div>
+
+        <div class="card">
+            <h3>Investigación de mercados</h3>
+            <p>Análisis de información para conocer a los consumidores.</p>
+        </div>
+    </div>
+</section>
+
+<!-- NUEVA FUNCION: FAVORITOS -->
+<section id="favoritos" class="pagina">
+
+    <h2>Mis temas favoritos</h2>
+
+    <span class="etiqueta">Función en desarrollo</span>
+
+    <div class="aviso">
+        <strong>Vista previa:</strong>
+        Esta función permitirá seleccionar temas de mercadotecnia
+        para que cada visitante pueda consultar sus intereses.
+        Por el momento, las selecciones solo se muestran durante
+        la visita y no se guardan permanentemente.
+    </div>
+
+    <h3>1. Selecciona los temas que te interesan</h3>
+
+    <div class="grid">
+
+        <div class="card tema">
+            <div class="icono">📱</div>
+            <h3>Marketing digital</h3>
+            <p>Uso de internet y plataformas digitales para promocionar.</p>
+            <button onclick="seleccionarTema('Marketing digital',this)">
+                Agregar a favoritos
+            </button>
+        </div>
+
+        <div class="card tema">
+            <div class="icono">📢</div>
+            <h3>Publicidad</h3>
+            <p>Formas de comunicar y promocionar productos.</p>
+            <button onclick="seleccionarTema('Publicidad',this)">
+                Agregar a favoritos
+            </button>
+        </div>
+
+        <div class="card tema">
+            <div class="icono">🔎</div>
+            <h3>Investigación de mercados</h3>
+            <p>Estudio de clientes, mercados y preferencias.</p>
+            <button onclick="seleccionarTema('Investigación de mercados',this)">
+                Agregar a favoritos
+            </button>
+        </div>
+
+        <div class="card tema">
+            <div class="icono">🛒</div>
+            <h3>Comportamiento del consumidor</h3>
+            <p>Estudia cómo las personas eligen y compran productos.</p>
+            <button onclick="seleccionarTema('Comportamiento del consumidor',this)">
+                Agregar a favoritos
+            </button>
+        </div>
+
+        <div class="card tema">
+            <div class="icono">📊</div>
+            <h3>Estrategias de ventas</h3>
+            <p>Técnicas para mejorar la comercialización.</p>
+            <button onclick="seleccionarTema('Estrategias de ventas',this)">
+                Agregar a favoritos
+            </button>
+        </div>
+
+        <div class="card tema">
+            <div class="icono">💡</div>
+            <h3>Las 4P del marketing</h3>
+            <p>Producto, precio, plaza y promoción.</p>
+            <button onclick="seleccionarTema('Las 4P del marketing',this)">
+                Agregar a favoritos
+            </button>
+        </div>
+
+    </div>
+
+    <div class="seccion">
+        <h3>2. Mis temas seleccionados</h3>
+
+        <p id="mensaje">
+            Todavía no has seleccionado ningún tema.
+        </p>
+
+        <ul id="listaFavoritos" class="lista-favoritos"></ul>
+
+        <button class="boton boton-azul" onclick="limpiarFavoritos()">
+            Limpiar selección
+        </button>
+    </div>
+
+    <!-- RECORRIDO -->
+    <div class="seccion">
+        <h2>¿Cómo funcionará?</h2>
+
+        <div class="recorrido">
+
+            <div class="paso">
+                <div class="numero">1</div>
+                <h3>Visita</h3>
+                <p>El estudiante entra a MercadoLearn y explora los temas.</p>
+            </div>
+
+            <div class="paso">
+                <div class="numero">2</div>
+                <h3>Acción</h3>
+                <p>Selecciona los temas que quiere guardar como favoritos.</p>
+            </div>
+
+            <div class="paso">
+                <div class="numero">3</div>
+                <h3>Resultado</h3>
+                <p>Consulta una lista con los temas que seleccionó.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DATOS -->
+    <div class="seccion">
+        <h2>3. Datos que necesitaría la función</h2>
+
+        <p>
+            Para implementar esta función en el futuro se necesitarían
+            los siguientes datos:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>¿Para qué?</th>
+                    <th>¿Obligatorio?</th>
+                    <th>¿Quién lo ve?</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Correo electrónico</td>
+                    <td>Identificar la cuenta del estudiante.</td>
+                    <td>Sí</td>
+                    <td>Usuario y sistema</td>
+                </tr>
+
+                <tr>
+                    <td>Nombre</td>
+                    <td>Identificar al usuario.</td>
+                    <td>No</td>
+                    <td>Usuario y sistema</td>
+                </tr>
+
+                <tr>
+                    <td>Temas favoritos</td>
+                    <td>Guardar los intereses del estudiante.</td>
+                    <td>No</td>
+                    <td>Solo el usuario</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="seccion">
+        <h2>¿Por qué elegimos esta función?</h2>
+        <p>
+            Elegimos esta función porque permite que los estudiantes
+            personalicen su aprendizaje y tengan una selección de los
+            temas que más les interesan. Así, MercadoLearn puede ofrecer
+            una experiencia más organizada y útil para sus visitantes.
+        </p>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <h3 style="color:#60d5e8;">MercadoLearn</h3>
+    <p>Aprende, descubre y conoce la mercadotecnia.</p>
+    <p>Proyecto de Programación B5B | Tercer parcial</p>
+</footer>
+
+<script>
+
+// Cambiar entre las secciones de la página
+function mostrarPagina(id, boton) {
+
+    document.querySelectorAll('.pagina').forEach(pagina => {
+        pagina.classList.remove('activa');
+    });
+
+    document.getElementById(id).classList.add('activa');
+
+    document.querySelectorAll('nav button').forEach(b => {
+        b.classList.remove('activo');
+    });
+
+    if (boton) {
+        boton.classList.add('activo');
+    } else {
+        const botones = document.querySelectorAll('nav button');
+        botones.forEach(b => {
+            if (b.getAttribute('onclick').includes("'" + id + "'")) {
+                b.classList.add('activo');
+            }
+        });
+    }
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Selección temporal de temas favoritos
+let favoritos = [];
+
+function seleccionarTema(nombre, boton) {
+
+    if (favoritos.includes(nombre)) {
+
+        favoritos = favoritos.filter(tema => tema !== nombre);
+
+        boton.textContent = 'Agregar a favoritos';
+        boton.parentElement.classList.remove('seleccionado');
+
+    } else {
+
+        favoritos.push(nombre);
+
+        boton.textContent = '✓ Agregado';
+        boton.parentElement.classList.add('seleccionado');
+    }
+
+    actualizarFavoritos();
+}
+
+// Mostrar los temas seleccionados
+function actualizarFavoritos() {
+
+    const lista = document.getElementById('listaFavoritos');
+    const mensaje = document.getElementById('mensaje');
+
+    lista.innerHTML = '';
+
+    if (favoritos.length === 0) {
+        mensaje.textContent = 'Todavía no has seleccionado ningún tema.';
+        return;
+    }
+
+    mensaje.textContent = 'Estos son los temas que seleccionaste:';
+
+    favoritos.forEach(tema => {
+        const elemento = document.createElement('li');
+        elemento.textContent = tema;
+        lista.appendChild(elemento);
+    });
+}
+
+// Limpiar selección
+function limpiarFavoritos() {
+
+    favoritos = [];
+
+    document.querySelectorAll('.tema').forEach(card => {
+        card.classList.remove('seleccionado');
+
+        const boton = card.querySelector('button');
+        boton.textContent = 'Agregar a favoritos';
+    });
+
+    actualizarFavoritos();
+}
+
+</script>
+
+</body>
+</html>
